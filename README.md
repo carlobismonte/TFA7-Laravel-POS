@@ -1,59 +1,149 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Laravel POS - TFA7
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Forms, Validation, and File Upload
 
-## About Laravel
+A Laravel Point of Sale (POS) application developed
+for IT0049 - Web System Technologies.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+This project extends TFA6 by implementing customer
+and user forms, server-side validation, and avatar
+uploads with image resizing.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Developer
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- Name: Carlo Bismonte
+- Course: BSITWMA
+- Subject: IT0049 - Web System Technologies
+- Activity: TFA7
 
-## Learning Laravel
+## Features
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+### Customer Management
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- Display customer records
+- Create new customers
+- Edit existing customers
+- Validate required fields
+- Validate email addresses
+- Preserve form input after validation errors
+- Display validation and success messages
 
-## Laravel Sponsors
+### User Management
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+- Display user records
+- Create new users
+- Edit existing users
+- Validate unique usernames and emails
+- Validate and hash passwords
+- Upload optional profile pictures
+- Replace existing avatars
+- Display default avatar placeholders
 
-### Premium Partners
+### Avatar Upload
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+- Supported formats: JPG, JPEG, PNG, WebP
+- Maximum upload size: 2 MB
+- Automatic resizing to 300 x 300 pixels
+- Conversion to JPEG
+- Unique filenames using UUID
+- Storage using Laravel's public disk
 
-## Contributing
+## Technologies Used
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+- PHP
+- Laravel
+- MySQL
+- Blade Templates
+- HTML and CSS
+- Intervention Image
+- Composer
+- XAMPP
+- Git and GitHub
 
-## Code of Conduct
+## Installation
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 1. Clone the repository
 
-## Security Vulnerabilities
+git clone https://github.com/carlobismonte/TFA7-Laravel-POS.git
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### 2. Open the project
 
-## License
+cd TFA7-Laravel-POS
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### 3. Install dependencies
+
+composer install
+
+### 4. Configure environment
+
+Copy .env.example to .env.
+
+For Windows PowerShell:
+
+Copy-Item .env.example .env
+
+### 5. Generate application key
+
+php artisan key:generate
+
+### 6. Configure MySQL
+
+Create a database named laravel_pos.
+
+Update the .env database settings:
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=laravel_pos
+DB_USERNAME=root
+DB_PASSWORD=
+
+### 7. Run migrations
+
+php artisan migrate
+
+### 8. Create public storage link
+
+php artisan storage:link
+
+### 9. Start Laravel
+
+php artisan serve
+
+Visit http://127.0.0.1:8000
+
+Note: Existing sample records must be imported
+or seeded separately if they are not included
+in the repository.
+
+## Application Routes
+
+| URL                  | Description   |
+| -------------------- | ------------- |
+| /                    | Homepage      |
+| /about               | About page    |
+| /customers           | Customer list |
+| /customers/create    | Add customer  |
+| /customers/{id}/edit | Edit customer |
+| /users               | User list     |
+| /users/create        | Add user      |
+| /users/{id}/edit     | Edit user     |
+
+## Validation
+
+Customer forms validate required names and
+properly formatted email addresses.
+
+User forms validate required fields, unique
+usernames and emails, and password confirmation.
+
+Avatar uploads are restricted to supported image
+formats with a maximum size of 2 MB.
+
+## Project Purpose
+
+This project demonstrates Laravel MVC,
+Eloquent ORM, database migrations, form handling,
+server-side validation, secure file storage,
+and image processing.
